@@ -33,7 +33,7 @@ public class UDPReceiveSocket {
             //打印接收的数据
             System.out.println(ip + ":" + port + ":" + value);
         }
-        //关闭接收端
+        //关闭接收端。如果不断的获取客户端，不用关闭服务端。
 //        socket.close();
     }
 }

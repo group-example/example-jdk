@@ -8,7 +8,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /*
- * 演示：创建使用UDP通信的客户端
+ * 演示：创建使用UDP通信的发送端
  */
 public class UDPSendSocket {
 
