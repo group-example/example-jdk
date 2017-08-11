@@ -7,7 +7,7 @@ import java.net.DatagramSocket;
 /*
  * 演示二：创建使用UDP协议的接收端
  */
-public class UDPSocketReceiveDemo1 {
+public class UDPSocketDemo1 {
 
     public static void main(String[] args) throws IOException {
         receive();

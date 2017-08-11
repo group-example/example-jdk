@@ -8,7 +8,7 @@ import java.net.Socket;
 /*
 * 演示一：创建使用TCP协议的客户端.
 */
-public class TCPSocketClientDemo1 {
+public class TCPSocketDemo1 {
 
     public static void main(String[] args) throws IOException {
         client();
