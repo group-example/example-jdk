@@ -5,9 +5,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 /*
- * 演示：创建使用UDP协议的接收端
+ * 演示二：创建使用UDP协议的接收端
  */
-public class UDPReceiveSocket {
+public class UDPSocketReceiveDemo1 {
 
     public static void main(String[] args) throws IOException {
         receive();
@@ -37,3 +37,9 @@ public class UDPReceiveSocket {
 //        socket.close();
     }
 }
+
+// 总结：
+// 1、创建UDP的【接收端】：使用DatagramSocket的【带参构造】方法。
+// 2、创建用于接收数据的包：使用DatagramPacket的带参构造方法。
+// 3、接收数据：使用DatagramSocket类的receive(DatagramPacket)方法。
+

@@ -6,9 +6,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /*
-* 演示：创建使用TCP协议的客户端.
+* 演示一：创建使用TCP协议的客户端.
 */
-public class TCPClientSocket {
+public class TCPSocketClientDemo1 {
 
     public static void main(String[] args) throws IOException {
         client();
@@ -32,3 +32,7 @@ public class TCPClientSocket {
         s.close();
     }
 }
+//总结：
+// 1、创建TCP协议的【客户端】：使用Socket带参构造方法（指定服务端地址和端口）。
+// 2、给服务端发送数据：先使用客户端对象的getOutputStream()方法获得输出流，然后写出。
+// 3、获取服务端返回的数据：先使用客户端对象的getInputStream()方法输入流，然后读入。

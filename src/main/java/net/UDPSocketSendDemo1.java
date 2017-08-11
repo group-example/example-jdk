@@ -8,9 +8,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /*
- * 演示：创建使用UDP通信的发送端
+ * 演示二：创建使用UDP通信的发送端
  */
-public class UDPSendSocket {
+public class UDPSocketSendDemo1 {
 
     public static void main(String[] args) throws IOException {
         send();
@@ -39,3 +39,10 @@ public class UDPSendSocket {
         dgs.close();
     }
 }
+// 总结：
+// 1、创建UDP的【发送端】：使用DatagramSocket的【无参构造】方法。
+// 2、创建用于发送数据的包：使用DatagramPacket的带参构造方法（指定服务端地址和端口号）。
+// 3、发送数据：使用DatagramSocket类的send(DatagramPacket)方法。
+
+
+// TCP和UDP协议的区别：https://zhuanlan.zhihu.com/p/26649540。

@@ -8,9 +8,9 @@ import java.net.Socket;
 
 
 /*
- * 演示：创建使用TCP协议的服务端.
+ * 演示一：创建使用TCP协议的服务端.
  */
-public class TCPServerSocket {
+public class TCPSocketServerDemo1 {
 
     public static void main(String[] args) throws IOException {
         serve();
@@ -42,3 +42,9 @@ public class TCPServerSocket {
 //        ss.close();
     }
 }
+
+//总结：
+// 1、创建TCP协议的【服务端】：使用ServerSocket带参构造方法（指定端口）。
+// 2、获取接收到的客户端对象（Socket）：使用ServerSocket的accept方法。
+// 3、获取客户端发来的数据：先使用客户端对象的getInputStream()方法获得输入流，然后读入。
+// 4、给客户端返回数据：先使用客户端对象的getOutputStream()方法获得输出流，然后写出。
