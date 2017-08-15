@@ -3,6 +3,7 @@ package net;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 /*
 * TCP Socket 演示一：文件上传.
@@ -43,15 +44,21 @@ class TCPServer implements Runnable {
                 dir.mkdir();
             }
             int count = 1;
+
+            // 获得文件信息:
+            // 根据约定：前256个字节保存的是文件信息。
+            byte[] fileInfo = new byte[256];
+            in.read(fileInfo);
+
             // 创建输出的文件对象
-            // TODO 获得文件信息
-            File filePic = new File(dir, ip + "-" + count + ".png");
-            while (filePic.exists()) {
+            File file = new File(dir, ip + "-" + count + "-" + new String(fileInfo).trim());
+            while (file.exists()) {
                 count++;
-                filePic = new File(dir, ip + "-" + count + ".png");
+                file = new File(dir, ip + "-" + count + "-" + new String(fileInfo).trim());
             }
+            System.out.println("========file  path  is: "+file.getPath());
             // 创建文件输出流对象
-            FileOutputStream fos = new FileOutputStream(filePic);
+            FileOutputStream fos = new FileOutputStream(file);
             byte[] buf = new byte[1024];
             int len = 0;
             while ((len = in.read(buf)) != -1) {
@@ -63,6 +70,7 @@ class TCPServer implements Runnable {
             fos.close();
             s.close();
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
@@ -82,8 +90,7 @@ class TCPClient {
 
     static void send(String filePath) throws IOException {
         System.out.println("开始上传文件......");
-        // 创建socket。
-        Socket s = new Socket(ip, port);
+
         // 读取源文件。
         File picFile = new File(filePath);
         if (!picFile.exists()) {
@@ -91,13 +98,22 @@ class TCPClient {
         }
         FileInputStream fis = new FileInputStream(picFile);
 
+        // 封装文件信息（SequenceInputStream）:
+        // 定义一个256字节的区域来保存文件信息。
+        byte[] b = picFile.getName().getBytes();
+        byte[] fileName = Arrays.copyOf(b, 256);
+        ByteArrayInputStream bais = new ByteArrayInputStream(fileName);
+        // 注意：先读取第一个参数。
+        SequenceInputStream sequenceInputStream = new SequenceInputStream(bais,fis);
+
+        // 创建socket。
+        Socket s = new Socket(ip, port);
         // 获得socket输出流。
-        // TODO 封装文件信息（SequenceInputStream）
         OutputStream out = s.getOutputStream();
         byte[] buf = new byte[1024];
         int len = 0;
         // 让输出流从文件读取内容弄。
-        while ((len = fis.read(buf)) != -1) {
+        while ((len = sequenceInputStream.read(buf)) != -1) {
             out.write(buf, 0, len);
         }
         // 告诉服务器端图片数据发送完毕，不要等着读了。
@@ -109,6 +125,8 @@ class TCPClient {
         System.out.println(new String(bufIn, 0, lenIn));
         // 关闭。
         fis.close();
+        bais.close();
+        sequenceInputStream.close();
         System.out.println("结束上传文件......");
         s.close();
     }
