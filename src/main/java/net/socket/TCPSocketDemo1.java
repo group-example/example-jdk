@@ -1,6 +1,8 @@
-package net;
+package net.socket;
 
 import java.io.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
@@ -19,16 +21,16 @@ public class TCPSocketDemo1 {
             // 获取客户端对象
             Socket s = ss.accept();
             // 一个客户端启用一个线程
-            new Thread(new TCPServer(s)).start();
+            new Thread(new TCPServer1(s)).start();
         }
     }
 }
 
 // 服务端
-class TCPServer implements Runnable {
+class TCPServer1 implements Runnable {
     Socket s = null;
 
-    public TCPServer(Socket s) {
+    public TCPServer1(Socket s) {
         this.s = s;
     }
 
@@ -76,7 +78,7 @@ class TCPServer implements Runnable {
 }
 
 // 客户端
-class TCPClient {
+class TCPClient1 {
 
     // 服务端地址
     static String ip = "127.0.0.1";
