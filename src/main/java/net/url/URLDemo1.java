@@ -7,21 +7,12 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-/*
-* URL（Uniform Resource Locator）：中文名为统一资源定位符。
-* URL的组成：
-* * 协议为(protocol)：http/https/ftp/jdbc:mysql/
-* * 主机为(host:port)：www.runoob.com
-* * 端口号为(port): 80 ，以上URL实例并未指定端口，因为 HTTP 协议默认的端口号为 80。
-* * 文件路径为(path)：/index.html
-* * 请求参数(query)：language=cn
-* * 定位位置(fragment)：j2se，定位到网页中 id 属性为 j2se 的 HTML 元素位置 。
-* URL 书写形式：
-* protocol://host:port/path?query#fragment
-*
-*
-* 演示一：URL的简单使用
-*/
+/**
+
+ * <p>
+ * <p>
+ * 演示一：URL的简单使用
+ */
 public class URLDemo1 {
 
     public static void main(String[] args) throws IOException {

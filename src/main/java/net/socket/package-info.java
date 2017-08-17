@@ -2,15 +2,6 @@
 package net.socket;
 
 /**
- *
- *
- *
- * @SINCE 1.0
- * @AUTHOR
- * @VERSION 1.1
- */
-
-/**
  * 包内方法
  */
 class MyPackageMethod {

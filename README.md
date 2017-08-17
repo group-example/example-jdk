@@ -1,1 +1,1 @@
-# training-jdk
+# example-jdk

@@ -7,9 +7,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
 
-/*
-* TCP Socket 演示一：文件上传.
-*/
+/**
+ * TCP Socket 演示一：文件上传.
+ */
 public class TCPSocketDemo1 {
 
     public static void main(String[] args) throws Exception {
@@ -135,13 +135,3 @@ class TCPClient1 {
 
 }
 
-//【客户端】总结：
-// 1、创建TCP协议的【客户端】：使用Socket带参构造方法（指定服务端地址和端口）。
-// 2、给服务端发送数据：先使用客户端对象的getOutputStream()方法获得输出流，然后写出。
-// 3、获取服务端返回的数据：先使用客户端对象的getInputStream()方法输入流，然后读入。
-
-//【服务端】总结：
-// 1、创建TCP协议的【服务端】：使用ServerSocket带参构造方法（指定端口）。
-// 2、获取接收到的客户端对象（Socket）：使用ServerSocket的accept方法。
-// 3、获取客户端发来的数据：先使用客户端对象的getInputStream()方法获得输入流，然后读入。
-// 4、给客户端返回数据：先使用客户端对象的getOutputStream()方法获得输出流，然后写出。

@@ -5,9 +5,9 @@ import java.lang.annotation.Annotation;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/*
-* TCP Socket 演示二：模拟浏览器的请求和响应.
-*/
+/**
+ * TCP Socket 演示二：模拟浏览器的请求和响应.
+ */
 public class TCPSocketDemo2 {
 
     public static void main(String[] args) throws Exception {

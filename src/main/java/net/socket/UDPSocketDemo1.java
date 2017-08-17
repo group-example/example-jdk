@@ -7,7 +7,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-/*
+/**
  * UDP Socket（DatagramSocket）演示一：聊天室
  */
 public class UDPSocketDemo1 {
@@ -122,5 +122,5 @@ class UDPReceiver implements Runnable {
 // 2、创建用于发送数据的包：使用DatagramPacket的带参构造方法（指定服务端地址和端口号）。
 // 3、发送数据：使用DatagramSocket类的send(DatagramPacket)方法。
 
-// TCP & UDP 区别：https://zhuanlan.zhihu.com/p/26649540
+//
 
