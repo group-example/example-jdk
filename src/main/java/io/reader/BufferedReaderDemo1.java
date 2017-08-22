@@ -36,15 +36,22 @@ public class BufferedReaderDemo1 {
         // BufferedReader使用时必须接收字符流对象，而键盘录入是字节流，因此需要将字节流转字符流：InputStreamReader。
         BufferedReaderDemo1 bufr = new BufferedReaderDemo1(new InputStreamReader(System.in));
         String line = null;
-        while((line=bufr.readLine())!=null){//键盘录入记住定义结束标记。强制结束。
+        // 输入回车后显示结果。
+        while((line=bufr.readLine())!=null){
+            // 定义结束标记，强制结束。
             if("over".equals(line)){
                 break;
             }
             System.out.println("您输入的是："+line);
         }
+        /** 记住：以后但凡提到了键盘录入的需求，就用一行一行的读取，除非要对读取每一个字节操作。 */
     }
 
 
+    /**
+     * @param
+     * @return
+     */
     public int read() throws IOException {
         // 需要先通过流对象从底层设备上获取一定数据的数据到缓冲区数组中。 使用流对象read(char[]);
         //如果count记录字符个数的变量为0，说明缓冲区已经没有字符数据。
@@ -68,7 +75,11 @@ public class BufferedReaderDemo1 {
         return ch;
     }
 
-    //基于高效的read方法，建立一个一次可以读取一行的数据的方法。  将行终止符前的数据转成字符串返回。
+    /**
+     * 基于高效的read方法，建立一个一次可以读取一行的数据的方法。  将行终止符前的数据转成字符串返回。
+     * @param
+     * @return
+     */
     public String readLine() throws IOException {
         //1,定义一个临时容器。
         StringBuilder sb = new StringBuilder();
