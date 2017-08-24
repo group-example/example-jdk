@@ -2,41 +2,63 @@
  
 ## 流的使用步骤	 
 
-### 明确一：
-要操作的设备上的数据是字节还是文本？
+### 一、确定数据的【类型】和【传输方向】：
+操作的设备上的数据是字节还是文本,是出去还是进来？
+<table>
+    <tr>
+        <th></th>
+        <th>数据要出去</th>
+        <th>数据要进来</th>
+    </tr>
+    <tr>
+        <td>数据是字节</td>
+        <td>OutputStream</td>
+        <td>InputStream</td>
+    </tr>
+    <tr>
+        <td>数据是字符</td>
+        <td>Writer</td>
+        <td>Reader</td>
+    </tr>
+</table>
+
+
+### 二、确定数据【所在的设备类型】（介质）：
+数据来源的设备/数据目的地的设备，是什么类型？
+
+
+<table>
+    <tr>
+        <th></th>
+        <th>设备类型</th>
+    </tr>
+    <tr>
+        <td>硬盘</td>
+        <td>File开头</td>
+    </tr>
+    <tr>
+        <td>内存</td>
+        <td>ByteArray开头（字节）；CharArray开头（字符）</td>
+    </tr>
+    <tr>
+        <td>进程</td>
+        <td>Piped开头</td>
+    </tr>
+    <tr>
+        <td>键盘/显示器</td>
+        <td>System.in/System.out</td>
+    </tr>
+</table>
+
+
+### 三、确定额外的处理：
+是否需要额外的处理？（额外的处理可以更高效、更方便的操作数据）
 						
-|  如果是文本  | 如果是字节 | 
-|-----   |-----|
-| Writer | OutputStream  | 
-| Reader      | InputStream  | 	
- 
+ | 如果需要缓冲 |  如果需要转换 | 如果要控制打印|如果数据是对象（需序列化）| 如果数据是基本数据类型|
+|-----   |-----|  -----| ------| ------|
+ | BufferedInputStream  | InputStreamReader|PrintWriter |ObjectInputStream|DataInputStream|
+| BufferedOutputStream | OutputStreamWriter | PrintStream |ObjectOutputStream|DataOutputStream|
+|  BufferedReader     |   |  |  |
+|  BufferedWriter     |   |  |  |
 
-### 明确二：
-要操作的数据是要从设备输出，还是要输入到设备。
-						
-|  如果是输入  | 如果是输出 | 
-|-----   |-----|
-| InputStream | OutputStream  | 
-| Reader      | Writer  | 
-
-
-### 明确三：
-明确数据所在的设备类型。
-
-|  如果是输入  | 如果是输出 | 
-|-----   |-----|
-| 硬盘：文件  File开头 | 硬盘：文件  File开头  | 
-| 内存：字节数组，字符串      | 内存：字节数组，字符串  | 	 
-| 键盘：System.in      | 屏幕：System.out  | 	 
-| 网络：Socket      | 网络：Socket  | 
-
-
-### 明确四：
-是否需要额外功能？
-						
-|  如果需要转换  | 如果需要缓冲 | 如果需要数组 | 如果需要管道 |
-|-----   |-----|  -----| ------|
-| InputStreamReader | BufferedInputStream  | ByteArrayInputStream | PipedInputStream |
-| OutputStreamWriter| BufferedOutputStream  | ByteArrayOutputStream |PipedOutputStream |
-| | BufferedReader  |CharArrayReader  |PipedReader  |
-| | BufferedWriter  |CharArrayWriter  |PipedWriter  |
+> 注意：对象化流、数据化流，只适用于字节型数据。

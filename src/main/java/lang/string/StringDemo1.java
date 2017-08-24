@@ -20,6 +20,7 @@ public class StringDemo1 {
             String s = cutString(str, i + 1);
             System.out.println(str + ",截取" + (i + 1) + "个结果是:" + s);
         }
+        System.out.println(str);
     }
 
     public static String cutString(String str, int len) throws UnsupportedEncodingException {
@@ -38,11 +39,10 @@ public class StringDemo1 {
 
         //判断奇偶数。
         if (count % 2 == 0) {
-            return new String(Arrays.copyOfRange(buf,0,len),"gbk");
+            return new String(Arrays.copyOfRange(buf, 0, len), "gbk");
         } else {
-            return new String(Arrays.copyOfRange(buf,0,len-1),"gbk");//舍弃最后一个。
+            return new String(Arrays.copyOfRange(buf, 0, len - 1), "gbk");//舍弃最后一个。
         }
     }
-
 
 }
