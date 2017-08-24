@@ -1,5 +1,6 @@
 package io.reader;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -35,6 +36,7 @@ public class BufferedReaderDemo1 {
 
         // BufferedReader使用时必须接收字符流对象，而键盘录入是字节流，因此需要将字节流转字符流：InputStreamReader。
         BufferedReaderDemo1 bufr = new BufferedReaderDemo1(new InputStreamReader(System.in));
+        new FileInputStream("");
         String line = null;
         // 输入回车后显示结果。
         while((line=bufr.readLine())!=null){
