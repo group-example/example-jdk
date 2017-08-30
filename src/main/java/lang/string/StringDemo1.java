@@ -20,7 +20,6 @@ public class StringDemo1 {
             String s = cutString(str, i + 1);
             System.out.println(str + ",截取" + (i + 1) + "个结果是:" + s);
         }
-        System.out.println(str);
     }
 
     public static String cutString(String str, int len) throws UnsupportedEncodingException {
