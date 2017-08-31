@@ -82,7 +82,6 @@ class FileFilterBySuffix implements FileFilter {
         this.suffix = suffix;
     }
 
-    @Override
     public boolean accept(File pathname) {
         return pathname.getName().endsWith(suffix);
     }
