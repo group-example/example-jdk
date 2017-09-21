@@ -11,8 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="example-jdk" target="1.5" />
-      <module name="training-jdk" target="1.5" />
+      <module name="example-jdk" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
